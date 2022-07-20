@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import pygame
+import sys
+import traceback
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+pygame.init()
+pygame.mixer.init()
 
+background_size = width, height = 480, 700
+screen = pygame.display.set_mode(background_size)
+pygame.display.set_caption("Aircraft Battle_GG")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+background = pygame.image.load()
