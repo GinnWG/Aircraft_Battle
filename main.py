@@ -71,17 +71,17 @@ def main():
     me = myPlane.MyPlane(bg_size)
     clock = pygame.time.Clock()
 
-    # generate enemy
-    enemies = pygame.sprite.Group()
-    # small
-    small_enemies = pygame.sprite.Group()
-    add_small_enemies(small_enemies, enemies, 15)
-    # middle
-    mid_enemies = pygame.sprite.Group()
-    add_mid_enemies(mid_enemies, enemies, 4)
-    # big
-    big_enemies = pygame.sprite.Group()
-    add_big_enemies(big_enemies, enemies, 2)
+    # # generate enemy
+    # enemies = pygame.sprite.Group()
+    # # small
+    # small_enemies = pygame.sprite.Group()
+    # add_small_enemies(small_enemies, enemies, 15)
+    # # middle
+    # mid_enemies = pygame.sprite.Group()
+    # add_mid_enemies(mid_enemies, enemies, 4)
+    # # big
+    # big_enemies = pygame.sprite.Group()
+    # add_big_enemies(big_enemies, enemies, 2)
 
     running = True
     switch_image = True
@@ -109,43 +109,52 @@ def main():
 
         screen.blit(background, (0, 0))
 
-        # paint big enemy planes
-        for each in big_enemies:
-            each.move()
-            if switch_image:
-                screen.blit(each.image1, each.rect)
-            else:
-                screen.blit(each.image2, each.rect)
-            if each.rect.bottom > -50:
-                enemy3_fly_sound.play()
+        # # paint big enemy planes
+        # for each in big_enemies:
+        #     each.move()
+        #     if switch_image:
+        #         screen.blit(each.image1, each.rect)
+        #     else:
+        #         screen.blit(each.image2, each.rect)
+        #     if each.rect.bottom > -50:
+        #         enemy3_fly_sound.play()
+        #
+        # # paint mid enemy planes
+        # for each in mid_enemies:
+        #     each.move()
+        #     screen.blit(each.image, each.rect)
+        #
+        # # paint big enemy planes
+        # for each in small_enemies:
+        #     each.move()
+        #     screen.blit(each.image, each.rect)
 
-        # paint mid enemy planes
-        for each in mid_enemies:
-            each.move()
-            screen.blit(each.image, each.rect)
+        # e = 0
+        # while e < 10:
+        #     e += 1
+        #     pl = enemy.SmallEnemy(bg_size)
+        #     pl.move()
+        #     screen.blit(pl.image, pl.rect)
+        #
+        # # switch my Plane
+        # if switch_image:
+        #     screen.blit(me.image1, me.rect)
+        # else:
+        #     screen.blit(me.image2, me.rect)
 
-        # paint big enemy planes
-        for each in small_enemies:
-            each.move()
-            screen.blit(each.image, each.rect)
+        # delay switch image of plane
+        if not (delay % 5):
+            switch_image = not switch_image
 
-            # switch my Plane
-            if switch_image:
-                screen.blit(me.image1, me.rect)
-            else:
-                screen.blit(me.image2, me.rect)
+        delay -= 1
+        if not delay:
+            delay = 100
 
-            # delay switch image of plane
-            if not (delay % 5):
-                switch_image = not switch_image
+        pygame.display.flip()
 
-            delay -= 1
-            if not delay:
-                delay = 100
+        clock.tick(60)
 
-            pygame.display.flip()
 
-            clock.tick(60)
 
     if __name__ == "__main__":
         try:

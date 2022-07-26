@@ -55,7 +55,7 @@ class BigEnemy(pygame.sprite.Sprite):
         self.width, self.height = bg_size[0], bg_size[1]
         self.speed = 1
         self.rect.left, self.rect.top = randint(0, self.width), randint(-15 * self.height,
-                                                                        -5 * self.height)  # unless wait a screen before arrive
+                                                                        -5 * self.height)  # unless wait lot of screens before arrive
 
     def move(self):
         if self.rect.top < self.height:
