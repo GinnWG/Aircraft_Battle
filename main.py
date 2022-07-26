@@ -4,12 +4,13 @@ import traceback
 
 from pygame.locals import *
 
+import myPlane
 
 pygame.init()
 pygame.mixer.init()
 
-background_size = width, height = 480, 700
-screen = pygame.display.set_mode(background_size)
+bg_size = width, height = 480, 700
+screen = pygame.display.set_mode(bg_size)
 pygame.display.set_caption("Aircraft Battle_GG")
 
 background = pygame.image.load("resource/images/background.png").convert()
@@ -43,15 +44,42 @@ me_down_sound.set_volume(0.2)
 
 def main():
     pygame.mixer.music.play(-1)
+
+    # generate my plane
+    me = myPlane.MyPlane(bg_size)
     clock = pygame.time.Clock()
     running = True
+    switch_image = True
+
 
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
+
+        # get keyboard
+        key_pressed = pygame.key.get_pressed()
+
+        if key_pressed[K_w] or key_pressed[K_UP]:
+            me.moveUp()
+        if key_pressed[K_s] or key_pressed[K_DOWN]:
+            me.moveDown()
+        if key_pressed[K_a] or key_pressed[K_LEFT]:
+            me.moveLeft()
+        if key_pressed[K_d] or key_pressed[K_RIGHT]:
+            me.moveRight()
+
         screen.blit(background, (0, 0))
+
+        # switch Plane image
+
+        switch_image = not switch_image
+        if switch_image:
+            screen.blit(me.image1, me.rect)
+        else:
+            screen.blit(me.image2, me.rect)
+
 
         pygame.display.flip()
 
