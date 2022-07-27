@@ -4,7 +4,10 @@ import sys
 from random import *
 
 
+# how to add subclass to a sprite group in pygame
 class SmallEnemy(pygame.sprite.Sprite):
+    speed = 2
+
     def __init__(self, bg_size):
         pygame.sprite.Sprite.__init__(self)
 

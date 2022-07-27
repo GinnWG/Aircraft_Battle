@@ -89,7 +89,7 @@ def main():
     # delay of image
     delay = 100
 
-    while running:
+    while True:
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -110,7 +110,7 @@ def main():
         screen.blit(background, (0, 0))
 
         # # paint big enemy planes
-        # for each in big_enemies:
+        # for each in big_enemies.:
         #     each.move()
         #     if switch_image:
         #         screen.blit(each.image1, each.rect)
@@ -136,11 +136,11 @@ def main():
         #     pl.move()
         #     screen.blit(pl.image, pl.rect)
         #
-        # # switch my Plane
-        # if switch_image:
-        #     screen.blit(me.image1, me.rect)
-        # else:
-        #     screen.blit(me.image2, me.rect)
+        # switch my Plane
+        if switch_image:
+            screen.blit(me.image1, me.rect)
+        else:
+            screen.blit(me.image2, me.rect)
 
         # delay switch image of plane
         if not (delay % 5):
@@ -156,12 +156,12 @@ def main():
 
 
 
-    if __name__ == "__main__":
-        try:
-            main()
-        except SystemExit:
-            pass
-        except:
-            traceback.print_exc()
-            pygame.quit()
-            input()
+if __name__ == "__main__":
+    try:
+        main()
+    except SystemExit:
+        pass
+    except:
+        traceback.print_exc()
+        pygame.quit()
+        input()
